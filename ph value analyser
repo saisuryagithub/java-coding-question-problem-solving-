@@ -1,0 +1,22 @@
+AQUARIUM PH VALUE
+CODE:
+import java.util.Scanner;
+
+class PhLevelAnalyser {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the pH value");
+        double pH = sc.nextDouble();
+
+        if (pH < 7) {
+            System.out.println("pH value is low, partial water change required");
+        } else if (pH >= 7 && pH <= 8) {
+            System.out.println("pH value is fine");
+        } else if (pH > 8) {
+            System.out.println("pH value is high, partial water change required");
+        }
+
+        sc.close();
+    }
+}
+
