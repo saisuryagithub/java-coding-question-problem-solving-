@@ -1,0 +1,26 @@
+//longest word//
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter the string");
+		String lw = sc.nextLine();
+		System.out.println("longest word "+ longestWord(lw));
+		sc.close();
+	}
+	public static String longestWord(String lw){
+	    String[] words = lw.split("\\s+");
+	    String longest = " ";
+	    
+	    for(String word : words){
+	        if(word.length()>longest.length()){
+	            longest = word;
+	        }
+	        
+	    }
+	    return longest;
+	    
+	}
+}
