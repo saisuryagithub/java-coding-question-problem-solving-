@@ -1,0 +1,27 @@
+package com.jap;
+
+public class ShortestWord {
+    public static void main(String[] args) {
+        String[] words = {"Java", "Python", "Programming"};
+
+        ShortestWord shortestWord = new ShortestWord();
+        String shortest = shortestWord.findShortestWord(words);
+        
+        System.out.println("The Shortest word is " + shortest);
+    }
+
+    public String findShortestWord(String[] words) {
+        if (words == null || words.length == 0) {
+            return "Cannot find shortest word as array is empty";
+        }
+
+        String shortest = words[0];
+
+        for (int i = 1; i < words.length; i++) {
+            if (words[i].length() < shortest.length()) {
+                shortest = words[i];
+            }
+        }
+        return shortest;
+    }
+}
