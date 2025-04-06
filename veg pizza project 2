@@ -1,0 +1,107 @@
+package com.jap.marksevaluation;
+import java.util.Arrays;
+public class OakBridgeSchool {
+    public int[] calculateTotalMarks(int[] math, int[] science, int[] english) {
+		if (math.length == 0 || science.length == 0 || english.length == 0) {
+        return new int[0]; 
+    }
+        int[] totalMarks = new int[math.length];
+        for (int i = 0; i < math.length; i++) {
+            totalMarks[i] = math[i] + science[i] + english[i];
+        }
+        return totalMarks;
+    }
+    public int[] calculateTotalAverageMarksForEachStudent(int[] totalMarks, int noOfSubjects) {
+    if (noOfSubjects == 0 || totalMarks.length == 0) return new int[0]; 
+    int[] averages = new int[totalMarks.length];
+    for (int i = 0; i < totalMarks.length; i++) {
+        averages[i] = totalMarks[i] / noOfSubjects;
+    }
+    return averages;
+}
+    public double calculateAverageScienceMarks(int[] science, int len) {
+         if (len == 0) return 0.0; 
+    
+    double sum = 0;
+    for (int i = 0; i < len; i++) {
+        sum += science[i];
+    }
+    return sum / len;
+    }
+    public double calculateAverageEnglishMarks(int[] english, int len) {
+         if (len == 0) return 0.0; 
+    
+    double sum = 0;
+    for (int i = 0; i < len; i++) {
+        sum += english[i];
+    }
+    return sum / len;
+    }
+    public double calculateAverageMathMarks(int[] math, int len) {
+		    if (len == 0) return 0.0; 
+    
+    double sum = 0;
+    for (int i = 0; i < len; i++) {
+        sum += math[i];
+    }
+    return sum / len;
+        
+    }
+    public char findGradeInMath(int math) {
+        return getGrade(math);
+    }
+    public char findGradeInScience(int science) {
+        return getGrade(science);
+    }
+    public char findGradeInEnglish(int english) {
+        return getGrade(english);
+    }
+    private char getGrade(int marks) {
+        if (marks >= 90) return 'A';
+        if (marks >= 80) return 'B';
+        if (marks >= 70) return 'C';
+        if (marks >= 60) return 'D';
+        return 'F';
+    }
+    public int[] sortByTotalMarks(int[] totalMarks) {
+        for (int i = 1; i < totalMarks.length; i++) {
+            int key = totalMarks[i];
+            int j = i - 1;
+            while (j >= 0 && totalMarks[j] > key) {
+                totalMarks[j + 1] = totalMarks[j];
+                j--;
+            }
+            totalMarks[j + 1] = key;
+        }
+        return totalMarks;
+    }
+    public boolean checkIfNamesAreRepeated(String[] studentNames) {
+       for (int i = 0; i < studentNames.length; i++) {
+        for (int j = i + 1; j < studentNames.length; j++) {
+            if (studentNames[i].equals(studentNames[j])) { 
+                return true; 
+            }
+        }
+    }
+    return false; 
+    }
+    public int findTopScore(int[] totalMarks, int len) {
+        int topScore = totalMarks[0]; 
+        for (int i = 1; i < len; i++) {
+        if (totalMarks[i] > topScore) {
+            topScore = totalMarks[i]; 
+        }
+    }
+    return topScore;
+    }
+    public void displayDetails(int totalMark, int averageMark, char mathGrade, char scienceGrade, char englishGrade, String   studentName, int rollNo) {
+        System.out.println("Student: " + studentName + ", Roll No: " + rollNo + ", Total Marks: " + totalMark + ", Average Marks: " + averageMark + ", Grades: Math - " + mathGrade + ", Science - " + scienceGrade + ", English - " + englishGrade);
+    }
+    public StringBuilder[] generateResultMessage(String[] studentName, int[] totalScore) {
+        StringBuilder[] messages = new StringBuilder[studentName.length];
+        for (int i = 0; i < studentName.length; i++) {
+            messages[i] = new StringBuilder("Hi " + studentName[i] + " you have secured " + totalScore[i]);
+        }
+        return messages;
+    }
+}
